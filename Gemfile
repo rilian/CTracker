@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'savon'
 gem 'nokogiri'
 gem 'thin'
+gem 'jquery-rails'
 
 group :development do
   gem 'debugger'
@@ -15,4 +16,8 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'database_cleaner'
+end
+
+group :assets do
+  gem 'sass-rails'
 end
