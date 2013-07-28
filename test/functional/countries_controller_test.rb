@@ -15,7 +15,7 @@ class CountriesControllerTest < ActionController::TestCase
 
   test "should create country" do
     assert_difference('Country.count') do
-      post :create, :country => @country.attributes.merge({ :code => Time.now.to_s })
+      post :create, :country => @country.attributes.merge({ :code => Time.now.to_s }).except('created_at', 'updated_at')
     end
 
     assert_redirected_to country_path(assigns(:country))
@@ -23,11 +23,11 @@ class CountriesControllerTest < ActionController::TestCase
 
   test "should not create duplicate currency" do
     assert_no_difference('Currency.count') do
-      post :create, :country => @country.attributes
+      post :create, :country => @country.attributes.except('created_at', 'updated_at')
     end
 
     assert !assigns[:country].errors[:code].empty?
-  end  
+  end
 
   test "should show country" do
     get :show, :id => @country.to_param
@@ -40,7 +40,7 @@ class CountriesControllerTest < ActionController::TestCase
   end
 
   test "should update country" do
-    put :update, :id => @country.to_param, :country => @country.attributes
+    put :update, :id => @country.to_param, :country => @country.attributes.except('created_at', 'updated_at')
     assert_redirected_to country_path(assigns(:country))
   end
 end
