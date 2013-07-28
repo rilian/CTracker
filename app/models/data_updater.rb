@@ -30,9 +30,7 @@ class DataUpdater
 
   # Other model methods
   def initialize
-    @client = Savon::Client.new do
-      wsdl.document = "http://www.webservicex.net/country.asmx?WSDL"
-    end
+    @client = Savon::Client.new(wsdl: "http://www.webservicex.net/country.asmx?WSDL")
   end
 
   def update
