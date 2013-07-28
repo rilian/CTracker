@@ -19,21 +19,21 @@ class ActiveSupport::TestCase
     end
   end
 
-  def self.test_validates_presence_of(*attributes)
-    attributes.each do |attribute|
-      test "validates_presence_of #{attribute}" do
-        object = testing_class.new(attribute => nil)
-        assert object.invalid?
-        assert object.errors[attribute].include?("can't be blank")
-      end
-    end
-  end
-
-  def testing_class
+  def custom_testing_class
     begin
       self.class.to_s[0..-5].constantize
     rescue NameError
       nil
+    end
+  end
+
+  def self.test_validates_presence_of(*attributes)
+    attributes.each do |attribute|
+      test "validates_presence_of #{attribute}" do
+        object = custom_testing_class.new(attribute => nil)
+        assert object.invalid?
+        assert object.errors[attribute].include?("can't be blank")
+      end
     end
   end
 end
