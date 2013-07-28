@@ -39,6 +39,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    columnize (0.3.6)
     cucumber (1.3.5)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -50,9 +51,17 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (~> 3.0)
+    daemons (1.1.9)
     database_cleaner (1.0.1)
+    debugger (1.6.1)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.3)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     gherkin (2.12.0)
       multi_json (~> 1.3)
     gyoku (1.0.0)
@@ -113,6 +122,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.14)
@@ -133,7 +146,9 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  debugger
   nokogiri
   rails (= 3.2.14)
   savon
   sqlite3
+  thin
