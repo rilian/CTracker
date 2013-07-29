@@ -16,7 +16,8 @@ before_install:
 bundler_args: --without development assets
 
 before_script:
-  - "bundle exec rake db:create db:migrate ; RAILS_ENV=test rake db:migrate"
+  - "bundle exec rake db:create"
+  - "RAILS_ENV=test rake db:migrate"
 
 script:
   - "TRAVIS=1 bundle exec rake test"
