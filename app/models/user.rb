@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   # Validations: presence > by type > validates
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin
 
   # Model dictionaries, state machine
 

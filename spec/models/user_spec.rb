@@ -17,6 +17,7 @@ describe User do
   it { should allow_mass_assignment_of :password }
   it { should allow_mass_assignment_of :password_confirmation }
   it { should allow_mass_assignment_of :remember_me }
+  it { should allow_mass_assignment_of :is_admin }
 
   describe '.not_visited_countries' do
     pending
