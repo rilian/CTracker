@@ -13,6 +13,7 @@ Actions
 * Added tasks list
 * Added devise and set it up initially for user authentication
 * Set up user authorization and one testing user in seeds
+* Fixing all starting failing controller tests, adding authentication stubs
 
 TODO
 ----
