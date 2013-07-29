@@ -44,5 +44,4 @@ rescue NameError
 end
 
 # Cleanup all if `cucumber` is running after unit test fixtures have been loaded
-Country.delete_all
-Currency.delete_all
+DatabaseCleaner.clean!

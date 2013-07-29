@@ -2,8 +2,9 @@ Feature: Manage countries
   In order to manage his travel itinerary
   Mr. Smart
   wants to manage the countries he has visited.
-  
+
   Scenario: List Countries
+    Given I am a new, authenticated user
     Given the following countries exist:
       |name|code|visited|
       |CountryOne|c1|false|
@@ -21,6 +22,7 @@ Feature: Manage countries
       |CountryFive|c5|Visited|
 
   Scenario: Visit Country
+    Given I am a new, authenticated user
     Given I am on a country page
     When I follow "Edit"
     And I check "Visited"
