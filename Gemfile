@@ -6,6 +6,7 @@ gem 'savon'
 gem 'nokogiri'
 gem 'thin'
 gem 'jquery-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'debugger'
