@@ -1,13 +1,14 @@
 require 'test_helper'
 
 class CurrenciesControllerTest < ActionController::TestCase
-  should_not_respond_to_actions :new => :get, 
-                                :destroy => :get, 
+  should_not_respond_to_actions :new => :get,
+                                :destroy => :get,
                                 :create => :post,
-                                :edit => :get, 
+                                :edit => :get,
                                 :update => :put
 
   setup do
+    @user = users(:one)
     @currency = currencies(:one)
   end
 
@@ -18,6 +19,7 @@ class CurrenciesControllerTest < ActionController::TestCase
   end
 
   test "should show currency" do
+    sign_in @user
     get :show, :id => @currency.to_param
     assert_response :success
   end
