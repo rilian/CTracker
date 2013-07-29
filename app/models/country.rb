@@ -2,11 +2,14 @@ class Country < ActiveRecord::Base
   # Includes
 
   # Before, after callbacks
+  after_commit :visit_country, on: :update, if: Proc.new { |c| c.visited }
 
   # Default scopes, default values (e.g. self.per_page =)
+  self.primary_key = 'code'
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   has_many :currencies
+  has_many :user_countries, primary_key: 'code', foreign_key: 'country_id', dependent: :destroy
 
   # Validations: presence > by type > validates
   validates_presence_of :name
@@ -14,9 +17,10 @@ class Country < ActiveRecord::Base
   validates_uniqueness_of :code, :allow_blank => true
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  self.primary_key = 'code'
 
-  attr_accessible :name, :code, :visited
+  attr_accessor :visited
+  attr_accessor :visitor_id
+  attr_accessible :name, :code, :visited, :visitor_id
 
   accepts_nested_attributes_for :currencies, :allow_destroy => true
 
@@ -26,12 +30,19 @@ class Country < ActiveRecord::Base
   class << self
   end
 
-  scope :visited, :conditions => {:visited => true}
-  scope :not_visited, :conditions => {:visited => false}
-
   # Other model methods
+
+  def visited_by_user?(user)
+    user_countries.of_user(user).exists?
+  end
 
   # Private methods (for example: custom validators)
   private
 
+  ##
+  # Save record that user visited this country
+  #
+  def visit_country
+    self.user_countries.create!(user_id: self.visitor_id)
+  end
 end

@@ -3,10 +3,10 @@
     <table>
       <tr>
         <th>Collected</th>
-        <td><%= Currency.collected_by_user(current_user).count %></td>
+        <td><%= current_user.currencies.count %></td>
       </tr><tr>
         <th>Not Collected</th>
-        <td><%= Currency.not_collected_by_user(current_user).count %></td>
+        <td><%= current_user.not_collected_currencies.count %></td>
       </tr>
     </table>
   </div>

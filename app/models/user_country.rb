@@ -7,11 +7,11 @@ class UserCountry < ActiveRecord::Base
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :user
-  belongs_to :country
+  belongs_to :country, :primary_key => 'code', :foreign_key => 'country_id'
 
   # Validations: presence > by type > validates
-  validates_presence_of :user
-  validates_presence_of :country
+  validates_presence_of :user_id
+  validates_presence_of :country_id
   validates_uniqueness_of :user_id, scope: :country_id
 
   # Other properties (e.g. accepts_nested_attributes_for)
@@ -22,6 +22,8 @@ class UserCountry < ActiveRecord::Base
   # Scopes
   class << self
   end
+
+  scope :from_country, ->(code) { where('country_id = ?', code) }
 
   # Other model methods
   def self.of_user(user)

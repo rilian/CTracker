@@ -4,7 +4,7 @@ class AssignDataToUser < ActiveRecord::Migration
 
     create_table :user_countries, :id => false do |t|
       t.integer :user_id, null: false
-      t.integer :country_id, null: false
+      t.string :country_id, null: false
 
       t.timestamps
     end

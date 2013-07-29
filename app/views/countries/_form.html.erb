@@ -1,4 +1,6 @@
 <%= form_for(@country) do |f| %>
+  <%= f.hidden_field :visitor_id, value: current_user.id %><br />
+
   <% if @country.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
@@ -20,8 +22,12 @@
     <%= f.text_field :code %>
   </div>
   <div class="field">
-    <%= f.label :visited %><br />
-    <%= f.check_box :visited %>
+    <% if @country.visited_by_user?(current_user) %>
+      Already visited
+    <% else %>
+      <%= f.label :visited %><br />
+      <%= f.check_box :visited %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

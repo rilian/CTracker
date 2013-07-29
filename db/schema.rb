@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20130729140428) do
 
   create_table "user_countries", :id => false, :force => true do |t|
     t.integer  "user_id",    :null => false
-    t.integer  "country_id", :null => false
+    t.string   "country_id", :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
