@@ -18,6 +18,7 @@ before_script:
 script:
   - "TRAVIS=1 bundle exec rake test"
   - "TRAVIS=1 bundle exec cucumber"
+  - "TRAVIS=1 bundle exec rspec -O rand -c"
 
 notifications:
   email: false
