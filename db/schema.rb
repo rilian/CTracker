@@ -11,14 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729105800) do
+ActiveRecord::Schema.define(:version => 20130729140428) do
 
   create_table "countries", :id => false, :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "visited",    :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "currencies", :id => false, :force => true do |t|
@@ -28,6 +27,15 @@ ActiveRecord::Schema.define(:version => 20130729105800) do
     t.datetime "updated_at", :null => false
     t.string   "country_id"
   end
+
+  create_table "user_countries", :id => false, :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "country_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_countries", ["user_id", "country_id"], :name => "index_user_countries_on_user_id_and_country_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
