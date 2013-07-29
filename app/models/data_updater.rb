@@ -30,28 +30,31 @@ class DataUpdater
 
   # Other model methods
   def initialize
-    @client = Savon::Client.new(wsdl: "http://www.webservicex.net/country.asmx?WSDL")
+    @client = Savon::Client.new(wsdl: 'http://www.webservicex.net/country.asmx?WSDL')
   end
 
   def update
-    response = get_soap_response
-    return nil if response.nil?
-
-    data = parse_response(response)
-    data.keys.each do |key|
-      data[key].each do |attributes|
-        object = key.to_s.classify.constantize.find_or_create_by_code(attributes)
-
+    if (response = get_soap_response)
+      data = parse_response(response)
+      data.keys.each do |key|
+        data[key].each do |attributes|
+          object = key.to_s.classify.constantize.find_or_create_by_code(attributes)
+        end
       end
+    else
+      Rails.logger.error 'No SOAP response'
     end
   end
 
   # Private methods (for example: custom validators)
   private
 
+  ##
+  # Returns XML set of currencies, stubbed one if ENV=development
+  #
   def get_soap_response
     begin
-      response = (defined?(USE_STATIC_DATA) && USE_STATIC_DATA) ? StaticSOAPResponse.new : @client.request(:get_currencies)
+      (defined?(USE_STATIC_DATA) && USE_STATIC_DATA) ? StaticSOAPResponse.new : @client.request(:get_currencies)
     rescue Exception => e
       Rails.logger.error "Error retrieving SOAP Response: '#{e.message}'"
       e.backtrace.each { |line| Rails.logger.error "- #{line}" }
