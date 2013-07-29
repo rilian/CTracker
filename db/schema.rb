@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729140428) do
+ActiveRecord::Schema.define(:version => 20130729200831) do
 
   create_table "countries", :id => false, :force => true do |t|
     t.string   "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20130729140428) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "countries", ["code"], :name => "index_countries_on_code"
+
   create_table "currencies", :id => false, :force => true do |t|
     t.string   "name"
     t.string   "code"
@@ -27,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20130729140428) do
     t.datetime "updated_at", :null => false
     t.string   "country_id"
   end
+
+  add_index "currencies", ["country_id"], :name => "index_currencies_on_country_id"
 
   create_table "user_countries", :id => false, :force => true do |t|
     t.integer  "user_id",    :null => false

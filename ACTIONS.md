@@ -28,10 +28,10 @@ Setting up
 Multi-tenant app
 
 - [x] Add a sample user with collection history
-- [ ] Login page with login and password
-- [ ] List only user's data for him
-- [ ] Integration test for user to log in
-- [ ] Integration test for user to see his data
+- [x] Login page with login and password
+- [x] List only user's data for him
+- [x] Integration test for user to log in
+- [x] Integration test for user to see his data
 - [ ] Authorize user to update only his data
 - [ ] Integration test for user to update his data
 - [ ] Test authorization

@@ -11,4 +11,17 @@ describe User do
 
   it { should have_db_index(:email) }
   it { should have_db_index(:reset_password_token) }
+
+  it { should allow_mass_assignment_of :email }
+  it { should allow_mass_assignment_of :password }
+  it { should allow_mass_assignment_of :password_confirmation }
+  it { should allow_mass_assignment_of :remember_me }
+
+  describe '.not_visited_countries' do
+    pending
+  end
+
+  describe '.not_collected_currencies' do
+    pending
+  end
 end

@@ -18,7 +18,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda'
 end
 
 group :assets do
