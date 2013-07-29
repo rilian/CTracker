@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+User.delete_all
+
+user = User.create!(email: 'user@example.com', password: 'please', password_confirmation: 'please')
+
+puts "Created User #{user.inspect}"
+
+
+

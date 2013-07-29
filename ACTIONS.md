@@ -12,6 +12,7 @@ Actions
 * Added rake task to populate currencies and countries using `DataUpdater`
 * Added tasks list
 * Added devise and set it up initially for user authentication
+* Set up user authorization and one testing user in seeds
 
 TODO
 ----
@@ -19,11 +20,11 @@ TODO
 Setting up
 
 - [x] Update gems, fix deprecations, make tests pass
-- [ ] Add travis.yml for easier testing
+- [x] Add travis.yml for easier testing
 
 Multi-tenant app
 
-- [ ] Add a sample user with collection history
+- [x] Add a sample user with collection history
 - [ ] Login page with login and password
 - [ ] List only user's data for him
 - [ ] Integration test for user to log in
