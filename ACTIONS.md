@@ -10,6 +10,8 @@ Actions
 * Use assets pipeline
 * Now all tests are passing again
 * Added rake task to populate currencies and countries using `DataUpdater`
+* Added tasks list
+* Added devise and set it up initially for user authentication
 
 TODO
 ----
@@ -17,6 +19,7 @@ TODO
 Setting up
 
 - [x] Update gems, fix deprecations, make tests pass
+- [ ] Add travis.yml for easier testing
 
 Multi-tenant app
 
