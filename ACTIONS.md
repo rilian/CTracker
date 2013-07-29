@@ -14,6 +14,8 @@ Actions
 * Added devise and set it up initially for user authentication
 * Set up user authorization and one testing user in seeds
 * Fixing all starting failing controller tests, adding authentication stubs
+* Move visited property to per-user basis. Reorganize everything
+* Fix broken tests around; introduce rspec testing
 
 TODO
 ----
