@@ -25,6 +25,9 @@ Feature: Manage countries
     Given I am a new, authenticated user
     Given I am on a country page
     When I follow "Edit"
+    Then I should see "Visited"
     And I check "Visited"
+    Then the "Visited" checkbox should be checked
     And I press "Update Country"
+    Given I am on a country page
     Then I should see "Status: Visited"

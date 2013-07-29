@@ -15,10 +15,13 @@ module NavigationHelpers
     when /the countries page/
       countries_path
     when /a country page/
-      country_path(Country.create!(:name => "Test Country", :code => "tc"))
+      country_attributes = { name: 'Test Country', code: 'tc' }
+      country = Country.where(country_attributes).first || Country.create!(country_attributes)
+      country_path(country)
     when /a country edit page/
-      edit_country_path(Country.create!(:name => "Test Country #{Time.now.to_i}", :code => Time.now.to_s))
-
+      country_attributes = { name: "Test Country #{Time.now.to_i}", code: "tc#{Time.now.to_i}" }
+      country = Country.where(country_attributes).first || Country.create!(country_attributes)
+      edit_country_path(country)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -45,4 +45,4 @@ end
 
 # Cleanup all if `cucumber` is running after unit test fixtures have been loaded
 
-[Country, Currency, User].map { |m| m.delete_all }
+[Country, Currency, User, UserCountry].map { |m| m.delete_all }

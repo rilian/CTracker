@@ -2,7 +2,7 @@ class Country < ActiveRecord::Base
   # Includes
 
   # Before, after callbacks
-  after_commit :visit_country, on: :update, if: Proc.new { |c| c.visited }
+  after_update :visit_country, if: Proc.new { |c| c.visited }
 
   # Default scopes, default values (e.g. self.per_page =)
   self.primary_key = 'code'
