@@ -20,6 +20,40 @@ describe Country do
   it { should validate_uniqueness_of(:code) }
 
   describe '.visited_by_user?' do
-    pending
+    context 'when no user_country records' do
+      subject { described_class.create!(name: 'a', code: 'b') }
+
+      it 'is not visited' do
+        subject.visited_by_user?(User.new).should be_false
+      end
+    end
+
+    context 'when user_country records exist' do
+      before do
+        @user = User.create!(email: 'user@example.com', password: '1'*6, password_confirmation: '1'*6)
+        @country = Country.create!(name: 'Ukr', code: 'ua')
+        UserCountry.create!(user_id: @user.id, country_id: @country.code)
+      end
+
+      it 'is visited' do
+        @country.visited_by_user?(@user).should be_true
+      end
+    end
+  end
+
+  describe '#visit_country' do
+    before do
+      @country = Country.create!(name: 'a', code: 'b', visited: false)
+    end
+
+    it 'records that user visited country' do
+      UserCountry.should have(0).items
+
+      @country.visitor_id = 1
+      @country.visited = true
+      @country.save.should be_true
+
+      UserCountry.where(user_id: 1, country_id: 'b').should have(1).item
+    end
   end
 end

@@ -17,7 +17,27 @@ describe Currency do
   it { should validate_presence_of :code }
   it { should validate_uniqueness_of(:code) }
 
-  describe '.collected_by_user??' do
-    pending
+  describe '.collected_by_user?' do
+    context 'when country not set' do
+      subject { described_class.create!(name: 'a', code: 'b', country_id: nil) }
+
+      it 'is not collected' do
+        subject.collected_by_user?(User.new).should be_false
+      end
+    end
+
+    context 'when country set' do
+      before do
+        @user = User.create!(email: 'user@example.com', password: '1'*6, password_confirmation: '1'*6)
+        Country.create!(name: 'Ukr', code: 'ua')
+        UserCountry.create!(user_id: @user.id, country_id: 'ua')
+      end
+
+      subject { described_class.create!(name: 'Hryvna', code: 'uah', country_id: 'ua') }
+
+      it 'is collected' do
+        subject.collected_by_user?(@user).should be_true
+      end
+    end
   end
 end
