@@ -8,6 +8,7 @@ describe User do
   it { should have_db_column(:remember_created_at).of_type(:datetime) }
   it { should have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
   it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
+  it { should have_db_column(:is_admin).of_type(:boolean).with_options(default: false, null: false) }
 
   it { should have_db_index(:email) }
   it { should have_db_index(:reset_password_token) }
