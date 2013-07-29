@@ -1,4 +1,6 @@
 class CurrenciesController < ApplicationController
+  load_and_authorize_resource :currency
+
   # GET /currencies
   # GET /currencies.xml
   def index
