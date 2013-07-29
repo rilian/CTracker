@@ -12,6 +12,11 @@ Feature: Manage countries
       |CountryThree|c3|true|
       |CountryFour|c4|true|
       |CountryFive|c5|true|
+    Given user visited following countries:
+      |code|
+      |c3|
+      |c4|
+      |c5|
     And I am on the countries page
     Then I should see the following table:
       |Name|Code|Status|
