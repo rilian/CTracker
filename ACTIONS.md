@@ -42,7 +42,7 @@ Additional Table Features
 - [x] Filter `Country` by name, add a search box on index page
 - [x] Filter `Currency` by name, add a search box on index page
 - [x] Integration test on filtering
-- [ ] Ordering on `Countries#Index` and `Countries#Index` pages
+- [x] Ordering on `Countries#Index` and `Countries#Index` pages
 - [ ] Visit `Country` button to perform visiting of selected by checkbox `Countries` on `Countries#Index` page
 - [ ] Collect `Currency` button to perform collecting of selected by checkbox `Currencies` on `Currency#Index` page
 - [ ] Make sure only visited/collected row is updated
