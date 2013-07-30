@@ -1,4 +1,4 @@
-html { 
+html {
   margin: 0px;
   padding: 0px;
 
@@ -10,7 +10,7 @@ html {
   background-attachment: fixed;
 }
 
-body { 
+body {
   position: relative;
   margin: 0px auto;
   padding: 5px 20px;
@@ -58,8 +58,8 @@ table {
 
 table th {
   text-align: left;
-  background: #333;
-  color: #FFF;
+  background: #ccccee;
+  color: #002a33;
 }
 
 table th,

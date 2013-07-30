@@ -56,3 +56,13 @@ Feature: Manage countries
       | Name      | Code | Status      |
       | CountryA1 | c1   | Not Visited |
       | CountryA2 | c2   | Visited     |
+    And I follow "Name"
+    Then I should see the following countries table:
+      | Name ▲   | Code | Status      |
+      | CountryA1 | c1   | Not Visited |
+      | CountryA2 | c2   | Visited     |
+    And I follow "Name ▲"
+    Then I should see the following countries table:
+      | Name ▼   | Code | Status      |
+      | CountryA2 | c2   | Visited     |
+      | CountryA1 | c1   | Not Visited |
