@@ -32,9 +32,10 @@ Multi-tenant app
 - [x] List only user's data for him
 - [x] Integration test for user to log in
 - [x] Integration test for user to see his data
-- [ ] Authorize user to update only his data
+- [x] Authorize user to update only his data
 - [ ] Integration test for user to update his data
-- [ ] Test authorization
+- [x] Test authorization
+- [ ] Add sign up, sign out etc links and profile page
 
 Additional Table Features
 
