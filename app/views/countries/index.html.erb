@@ -1,19 +1,37 @@
 <section>
-  <div id="visited_countries_chart" class="simple_pie_chart" width='300px' height='100px'>
-    <table>
-      <tr>
-        <th>Visited</th>
-        <td><%= current_user.countries.count %></td>
-      </tr><tr>
-        <th>Not Visited</th>
-        <td><%= current_user.not_visited_countries.count %></td>
-      </tr>
-    </table>
-  </div>
-
   <h1>Countries</h1>
 
   <table>
+    <tr>
+      <td>
+        <div id="visited_countries_chart" class="simple_pie_chart" width='300px' height='100px'>
+          <table>
+            <tr>
+              <th>Visited</th>
+              <td><%= current_user.countries.count %></td>
+            </tr>
+            <tr>
+              <th>Not Visited</th>
+              <td><%= current_user.not_visited_countries.count %></td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <%= search_form_for @q do |f| %>
+            <%= f.label :name_or_code_cont, 'Name or Country' %>
+            <%= f.text_field :name_or_code_cont %>
+            <%= f.submit %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <table id="countries_table">
     <tr>
       <th>Name</th>
       <th>Code</th>

@@ -6,19 +6,19 @@ Feature: Manage countries
   Scenario: List Countries
     Given I am a new, authenticated user
     Given the following countries exist:
-      |name|code|visited|
-      |CountryOne|c1|false|
-      |CountryTwo|c2|false|
-      |CountryThree|c3|true|
-      |CountryFour|c4|true|
-      |CountryFive|c5|true|
+      |name|code|
+      |CountryOne|c1|
+      |CountryTwo|c2|
+      |CountryThree|c3|
+      |CountryFour|c4|
+      |CountryFive|c5|
     Given user visited following countries:
       |code|
       |c3|
       |c4|
       |c5|
     And I am on the countries page
-    Then I should see the following table:
+    Then I should see the following countries table:
       |Name|Code|Status|
       |CountryOne|c1|Not Visited|
       |CountryTwo|c2|Not Visited|
@@ -36,3 +36,23 @@ Feature: Manage countries
 #    And I press "Update Country"
 #    Given I am on a country page
 #    Then I should see "Status: Visited"
+
+  Scenario: Filter Countries
+    Given I am a new, authenticated user
+    Given the following countries exist:
+      | name      | code |
+      | CountryA1 | c1   |
+      | CountryA2 | c2   |
+      | CountryB  | c3   |
+    Given user visited following countries:
+      | code |
+      | c2   |
+      | c3   |
+    Given I am on the countries page
+
+    When I fill in "Name or Country" with "A"
+    And I press "Search"
+    Then I should see the following countries table:
+      | Name      | Code | Status      |
+      | CountryA1 | c1   | Not Visited |
+      | CountryA2 | c2   | Visited     |

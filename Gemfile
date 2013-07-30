@@ -8,6 +8,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
+gem 'ransack'
 
 group :development, :test do
   gem 'debugger'

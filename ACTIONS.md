@@ -35,16 +35,17 @@ Multi-tenant app
 - [x] Authorize user to update only his data
 - [ ] Integration test for user to update his data
 - [x] Test authorization
-- [ ] Add sign up, sign out etc links and profile page
+- [x] Add sign up, sign out etc links and profile page
 
 Additional Table Features
 
-- [ ] Visit `Country` button to perform visiting of selected by checkbox `Countries` on `Countries#Index` page
-- [ ] Collect `Currency` button to perform visiting of selected by checkbox `Currencies` on `Currency#Index` page
-- [ ] Make sure only visited/collected row is updated
 - [ ] Filter `Country` by name, add a search box on index page
 - [ ] Filter `Currency` by name, add a search box on index page
+- [ ] Integration test on filtering
 - [ ] Ordering on `Countries#Index` and `Countries#Index` pages
+- [ ] Visit `Country` button to perform visiting of selected by checkbox `Countries` on `Countries#Index` page
+- [ ] Collect `Currency` button to perform collecting of selected by checkbox `Currencies` on `Currency#Index` page
+- [ ] Make sure only visited/collected row is updated
 - [ ] No page reloads occur when filtering occur
 - [ ] When the filter is cleared, all entities are displayed again
 - [ ] Check All feature on Country and Currency pages

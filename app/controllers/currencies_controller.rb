@@ -4,7 +4,8 @@ class CurrenciesController < ApplicationController
   # GET /currencies
   # GET /currencies.xml
   def index
-    @currencies = Currency.all
+    @q = Currency.search(params[:q])
+    @currencies = @q.result
 
     respond_to do |format|
       format.html # index.html.erb
