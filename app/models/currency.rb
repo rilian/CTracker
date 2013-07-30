@@ -15,7 +15,6 @@ class Currency < ActiveRecord::Base
   validates_uniqueness_of :code, :allow_blank => true
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  self.primary_key = 'code'
 
   attr_accessible :name, :code, :country_id
 

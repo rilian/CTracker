@@ -5,11 +5,10 @@ class Country < ActiveRecord::Base
   after_update :visit_country, if: Proc.new { |c| c.visited }
 
   # Default scopes, default values (e.g. self.per_page =)
-  self.primary_key = 'code'
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   has_many :currencies
-  has_many :user_countries, primary_key: 'code', foreign_key: 'country_id', dependent: :destroy
+  has_many :user_countries, dependent: :destroy
 
   # Validations: presence > by type > validates
   validates_presence_of :name

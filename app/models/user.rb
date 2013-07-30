@@ -29,13 +29,17 @@ class User < ActiveRecord::Base
   # Other model methods
 
   def not_visited_countries
-    code_field = Country.arel_table[:code]
-    Country.where(code_field.not_in(countries.pluck('code')))
+    id_field = Country.arel_table[:id]
+    country_ids = countries.pluck('id')
+    country_ids << 0 if country_ids.empty?
+    Country.where(id_field.not_in(country_ids))
   end
 
   def not_collected_currencies
-    code_field = Currency.arel_table[:code]
-    Currency.where(code_field.not_in(currencies.pluck('currencies.code')))
+    id_field = Currency.arel_table[:id]
+    currency_ids = currencies.pluck('currencies.id')
+    currency_ids << 0 if currency_ids.empty?
+    Currency.where(id_field.not_in(currency_ids))
   end
 
   # Private methods (for example: custom validators)

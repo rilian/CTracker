@@ -4,7 +4,7 @@ end
 
 Given /user visited following countries:/ do |countries|
   countries.hashes.collect { |c| c['code'] }.each do |code|
-    UserCountry.create!(user_id: User.first.id, country_id: code)
+    UserCountry.create!(user_id: User.last.id, country_id: Country.find_by_code(code).id)
   end
 end
 

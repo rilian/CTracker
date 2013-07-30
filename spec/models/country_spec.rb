@@ -32,7 +32,7 @@ describe Country do
       before do
         @user = User.create!(email: 'user@example.com', password: '1'*6, password_confirmation: '1'*6)
         @country = Country.create!(name: 'Ukr', code: 'ua')
-        UserCountry.create!(user_id: @user.id, country_id: @country.code)
+        UserCountry.create!(user_id: @user.id, country_id: @country.id)
       end
 
       it 'is visited' do
@@ -53,7 +53,7 @@ describe Country do
       @country.visited = true
       @country.save.should be_true
 
-      UserCountry.where(user_id: 1, country_id: 'b').should have(1).item
+      UserCountry.where(user_id: 1, country_id: @country.id).should have(1).item
     end
   end
 end

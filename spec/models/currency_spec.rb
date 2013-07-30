@@ -29,11 +29,11 @@ describe Currency do
     context 'when country set' do
       before do
         @user = User.create!(email: 'user@example.com', password: '1'*6, password_confirmation: '1'*6)
-        Country.create!(name: 'Ukr', code: 'ua')
-        UserCountry.create!(user_id: @user.id, country_id: 'ua')
+        @country = Country.create!(name: 'Ukr', code: 'ua')
+        UserCountry.create!(user_id: @user.id, country_id: @country.id)
       end
 
-      subject { described_class.create!(name: 'Hryvna', code: 'uah', country_id: 'ua') }
+      subject { described_class.create!(name: 'Hryvna', code: 'uah', country_id: @country.id) }
 
       it 'is collected' do
         subject.collected_by_user?(@user).should be_true

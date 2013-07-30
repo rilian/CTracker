@@ -219,7 +219,10 @@ end
 Given /^I am a new, authenticated user$/ do
   email = 'test1@test.com'
   password = 'please'
-  User.new(:email => email, :password => password, :password_confirmation => password).save!
+
+  unless (user = User.where(email: email).first)
+    User.create!(:email => email, :password => password, :password_confirmation => password)
+  end
 
   visit '/users/sign_in'
   fill_in 'user_email', :with => email
