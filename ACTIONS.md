@@ -58,8 +58,8 @@ Additional Table Features
 
 Additional Charting Features
 
-- [ ] A line graph over Countries table showing number of countries visited by time
-- [ ] A line graph over Currencies table showing number of currencies collected by time
+- [x] A line graph over Countries table showing number of countries visited by time
+- [x] A line graph over Currencies table showing number of currencies collected by time
 - [ ] Chart should be updated instantly when visiting/collecting performed
 
 General

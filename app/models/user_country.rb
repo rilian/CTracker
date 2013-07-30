@@ -4,10 +4,11 @@ class UserCountry < ActiveRecord::Base
   # Before, after callbacks
 
   # Default scopes, default values (e.g. self.per_page =)
+  self.default_scope order('user_countries.created_at ASC')
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :user
-  belongs_to :country, :primary_key => 'code', :foreign_key => 'country_id'
+  belongs_to :country
 
   # Validations: presence > by type > validates
   validates_presence_of :user_id
@@ -24,6 +25,8 @@ class UserCountry < ActiveRecord::Base
   end
 
   scope :from_country, ->(code) { where('country_id = ?', code) }
+
+  scope :for_date, ->(date) { where('user_countries.created_at') }
 
   # Other model methods
   def self.of_user(user)
