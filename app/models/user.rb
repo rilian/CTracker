@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable, :omniauthable, :trackable,
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  # :lockable, :timeoutable, :omniauthable, :trackable, :recoverable
+  devise :database_authenticatable, :registerable, :rememberable, :validatable
 
   # Before, after callbacks
 
@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   # Validations: presence > by type > validates
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin, :user_countries_attributes
+  accepts_nested_attributes_for :user_countries, :allow_destroy => true
 
   # Model dictionaries, state machine
 

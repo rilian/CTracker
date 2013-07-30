@@ -81,17 +81,17 @@ class DataUpdater
 
     result = {}
 
-    result[:currencies] = doc.css('Table').collect do |table|
-      {:name => table.css('Currency').text,
-       :code => table.css('CurrencyCode').text,
-       :country_id => table.css('CountryCode').text
-      }
-    end
-
     result[:countries] = doc.css('Table').collect { |table|
       {:name => table.css('Name').text,
        :code => table.css('CountryCode').text}
     }
+
+    result[:currencies] = doc.css('Table').collect do |table|
+      {:name => table.css('Currency').text,
+       :code => table.css('CurrencyCode').text,
+       :country_code => table.css('CountryCode').text
+      }
+    end
 
     result.keys.each { |key| result[key].reject! { |hash| hash[:name].blank? || hash[:code].blank? } }
 

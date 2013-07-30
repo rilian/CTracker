@@ -2,6 +2,7 @@ class Currency < ActiveRecord::Base
   # Includes
 
   # Before, after callbacks
+  after_create :update_country_id, if: Proc.new { |c| c.country_code.present? }
 
   # Default scopes, default values (e.g. self.per_page =)
 
@@ -16,7 +17,7 @@ class Currency < ActiveRecord::Base
 
   # Other properties (e.g. accepts_nested_attributes_for)
 
-  attr_accessible :name, :code, :country_id
+  attr_accessible :name, :code, :country_id, :country_code
 
   # Model dictionaries, state machine
 
@@ -32,5 +33,9 @@ class Currency < ActiveRecord::Base
 
   # Private methods (for example: custom validators)
   private
+
+  def update_country_id
+    self.update_attribute(:country_id, Country.find_by_code(self.country_code).id)
+  end
 
 end

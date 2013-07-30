@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(:version => 20130729220155) do
   create_table "currencies", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "country_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "country_id"
+    t.string   "country_code"
   end
 
   add_index "currencies", ["country_id"], :name => "index_currencies_on_country_id"

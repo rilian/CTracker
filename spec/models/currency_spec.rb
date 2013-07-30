@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Currency do
   it { should have_db_column(:name).of_type(:string) }
   it { should have_db_column(:code).of_type(:string) }
-  it { should have_db_column(:country_id).of_type(:string) }
+  it { should have_db_column(:country_id).of_type(:integer) }
+  it { should have_db_column(:country_code).of_type(:string) }
   it { should have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
   it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
 

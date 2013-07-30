@@ -16,7 +16,7 @@ class UserCountry < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: :country_id
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :user_id, :country_id
+  attr_accessible :user_id, :country_id, :created_at
 
   # Model dictionaries, state machine
 
@@ -25,8 +25,6 @@ class UserCountry < ActiveRecord::Base
   end
 
   scope :from_country, ->(code) { where('country_id = ?', code) }
-
-  scope :for_date, ->(date) { where('user_countries.created_at') }
 
   # Other model methods
   def self.of_user(user)

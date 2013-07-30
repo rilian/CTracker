@@ -22,6 +22,7 @@ Actions
 * Add ransack for filtering and searching
 * Cover filtering and ordering with cucumber tests
 * Modify schema to use integer primary keys, to avoid hacks around with connecting models
+* Properly link Currency to Country via country_id field
 
 TODO
 ----
@@ -39,7 +40,6 @@ Multi-tenant app
 - [x] Integration test for user to log in
 - [x] Integration test for user to see his data
 - [x] Authorize user to update only his data
-- [ ] Integration test for user to update his data
 - [x] Test authorization
 - [x] Add sign up, sign out etc links and profile page
 
