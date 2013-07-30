@@ -16,6 +16,12 @@ Actions
 * Fixing all starting failing controller tests, adding authentication stubs
 * Move visited property to per-user basis. Reorganize everything
 * Fix broken tests around; introduce rspec testing
+* Add cancan for authorization
+* Cover authorization with specs
+* Cover models with specs
+* Add ransack for filtering and searching
+* Cover filtering and ordering with cucumber tests
+* Modify schema to use integer primary keys, to avoid hacks around with connecting models
 
 TODO
 ----
