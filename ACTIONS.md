@@ -30,6 +30,7 @@ Actions
 * Done visit multiple countries with page reload
 * Done collect multiple currencies with page reload
 * Added CodeClimate badge
+* Controller specs on visit multiple and collect multiple
 * Working on updating each row without page reload
 
 TODO
