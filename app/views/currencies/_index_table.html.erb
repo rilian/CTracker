@@ -1,8 +1,5 @@
 <tr>
-  <th>
-    <%= label_tag :select_all %>
-    <%= check_box_tag :select_all %>
-  </th>
+  <th><label for="select_all">Select all</label><input id="select_all" name="select_all" type="checkbox"></th>
   <th><%= sort_link @q, :name %></th>
   <th><%= sort_link @q, :code %></th>
   <th>Status</th>
