@@ -69,3 +69,11 @@ Feature: Manage countries
       | Select all | Name ▼   | Code | Status      |
       |            | CountryA2 | c2   | Visited     |
       |            | CountryA1 | c1   | Not Visited |
+
+    When I fill in "Name or Country" with ""
+    And I press "Search"
+    Then I should see the following countries table:
+      | Select all | Name         | Code | Status      |
+      |            | CountryA1   | c1   | Not Visited |
+      |            | CountryA2   | c2   | Visited     |
+      |            | CountryB    | c3   | Visited     |
