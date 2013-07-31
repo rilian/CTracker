@@ -24,7 +24,7 @@ class CurrenciesController < ApplicationController
     end
   end
 
-  def update_multiple
+  def collect_multiple
     @currencies = Currency.find(params[:currency_ids])
     @currencies.each do |currency|
       if currency.country.present? && country = currency.country
@@ -34,6 +34,6 @@ class CurrenciesController < ApplicationController
       end
     end
 
-    redirect_to currencies_path, :notice => 'Currencies were successfully collected'
+    render nothing: true
   end
 end

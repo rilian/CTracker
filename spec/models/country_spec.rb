@@ -7,6 +7,7 @@ describe Country do
   it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
 
   it { should have_db_index(:code) }
+  it { should have_db_index(:name) }
 
   it { should allow_mass_assignment_of :name }
   it { should allow_mass_assignment_of :code }

@@ -29,6 +29,10 @@ Actions
 * Added ability to edit, update multiple countries
 * Done visit multiple countries with page reload
 * Done collect multiple currencies with page reload
+* Added CodeClimate badge
+* Controller specs on visit multiple and collect multiple
+* Working on updating each row without page reload
+* Collect currency and Visit country now work without page reload
 
 TODO
 ----
@@ -55,18 +59,20 @@ Additional Table Features
 - [x] Filter `Currency` by name, add a search box on index page
 - [x] Integration test on filtering
 - [x] Ordering on `Countries#Index` and `Countries#Index` pages
-- [ ] Visit `Country` button to perform visiting of selected by checkbox `Countries` on `Countries#Index` page
-- [ ] Collect `Currency` button to perform collecting of selected by checkbox `Currencies` on `Currency#Index` page
-- [ ] Make sure only visited/collected row is updated
+- [x] Visit checked `Country` button to perform visiting of selected by checkbox `Countries` on `Countries#Index` page
+- [x] Collect checked `Currency` button to perform collecting of selected by checkbox `Currencies` on `Currency#Index` page
+- [x] Check All feature on Country and Currency pages
+- [ ] No page reloads occur when Visiting or Collecting
 - [ ] No page reloads occur when filtering occur
-- [ ] When the filter is cleared, all entities are displayed again
-- [ ] Check All feature on Country and Currency pages
+- [ ] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
+- [ ] Cover functionality with cucumber tests
 
 Additional Charting Features
 
 - [x] A line graph over Countries table showing number of countries visited by time
 - [x] A line graph over Currencies table showing number of currencies collected by time
 - [ ] Chart should be updated instantly when visiting/collecting performed
+- [ ] Cover functionality with cucumber tests
 
 General
 
