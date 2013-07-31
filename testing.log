@@ -1,0 +1,218 @@
+$ rake test ; cucumber ; rspec
+
+Run options:
+
+# Running tests:
+
+Finished tests in 0.322687s, 21.6928 tests/s, 40.2867 assertions/s.
+7 tests, 13 assertions, 0 failures, 0 errors, 0 skips
+
+ruby -v: ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]
+Run options:
+
+# Running tests:
+
+Finished tests in 1.167704s, 12.8457 tests/s, 16.2712 assertions/s.
+15 tests, 19 assertions, 0 failures, 0 errors, 0 skips
+
+ruby -v: ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]
+
+
+
+
+
+Using the default profile...
+Feature: Manage countries
+  In order to manage his travel itinerary
+  Mr. Smart
+  wants to manage the countries he has visited.
+
+  Scenario: List Countries                           # features/countries.feature:6
+    Given I am a new, authenticated user             # features/step_definitions/web_steps.rb:219
+    Given the following countries exist:             # features/step_definitions/country_steps.rb:1
+      | name         | code |
+      | CountryOne   | c1   |
+      | CountryTwo   | c2   |
+      | CountryThree | c3   |
+      | CountryFour  | c4   |
+      | CountryFive  | c5   |
+    Given user visited following countries:          # features/step_definitions/country_steps.rb:5
+      | code |
+      | c3   |
+      | c4   |
+      | c5   |
+    And I am on the countries page                   # features/step_definitions/web_steps.rb:44
+    Then I should see the following countries table: # features/step_definitions/country_steps.rb:11
+      | Select all | Name         | Code | Status      |
+      |            | CountryOne   | c1   | Not Visited |
+      |            | CountryTwo   | c2   | Not Visited |
+      |            | CountryThree | c3   | Visited     |
+      |            | CountryFour  | c4   | Visited     |
+      |            | CountryFive  | c5   | Visited     |
+
+  @javascript
+  Scenario: Visit Country                  # features/countries.feature:30
+    Given I am a new, authenticated user   # features/step_definitions/web_steps.rb:219
+    Given the following countries exist:   # features/step_definitions/country_steps.rb:1
+      | name       | code |
+      | CountryOne | c1   |
+    And I am on the countries page         # features/step_definitions/web_steps.rb:44
+    Then I should see "Not Visited"        # features/step_definitions/web_steps.rb:105
+    When I check "Select all"              # features/step_definitions/web_steps.rb:89
+    And I press "Visit Selected Countries" # features/step_definitions/web_steps.rb:52
+    Then I should see "Visited"            # features/step_definitions/web_steps.rb:105
+    And I should not see "Not Visited"     # features/step_definitions/web_steps.rb:123
+
+  Scenario: Filter Countries                         # features/countries.feature:43
+    Given I am a new, authenticated user             # features/step_definitions/web_steps.rb:219
+    Given the following countries exist:             # features/step_definitions/country_steps.rb:1
+      | name      | code |
+      | CountryA1 | c1   |
+      | CountryA2 | c2   |
+      | CountryB  | c3   |
+    Given user visited following countries:          # features/step_definitions/country_steps.rb:5
+      | code |
+      | c2   |
+      | c3   |
+    Given I am on the countries page                 # features/step_definitions/web_steps.rb:44
+    When I fill in "Name or Country" with "A"        # features/step_definitions/web_steps.rb:60
+    And I press "Search"                             # features/step_definitions/web_steps.rb:52
+    Then I should see the following countries table: # features/step_definitions/country_steps.rb:11
+      | Select all | Name      | Code | Status      |
+      |            | CountryA1 | c1   | Not Visited |
+      |            | CountryA2 | c2   | Visited     |
+    And I follow "Name"                              # features/step_definitions/web_steps.rb:56
+    Then I should see the following countries table: # features/step_definitions/country_steps.rb:11
+      | Select all | Name ▲    | Code | Status      |
+      |            | CountryA1 | c1   | Not Visited |
+      |            | CountryA2 | c2   | Visited     |
+    And I follow "Name ▲"                            # features/step_definitions/web_steps.rb:56
+    Then I should see the following countries table: # features/step_definitions/country_steps.rb:11
+      | Select all | Name ▼    | Code | Status      |
+      |            | CountryA2 | c2   | Visited     |
+      |            | CountryA1 | c1   | Not Visited |
+    When I fill in "Name or Country" with ""         # features/step_definitions/web_steps.rb:60
+    And I press "Search"                             # features/step_definitions/web_steps.rb:52
+    Then I should see the following countries table: # features/step_definitions/country_steps.rb:11
+      | Select all | Name      | Code | Status      |
+      |            | CountryA1 | c1   | Not Visited |
+      |            | CountryA2 | c2   | Visited     |
+      |            | CountryB  | c3   | Visited     |
+
+Feature: Manage currencies
+  In order to manage his travel itinerary
+  Mr. Smart
+  wants to manage the currencies he collected
+
+  Scenario: List Countries                            # features/currencies.feature:6
+    Given I am a new, authenticated user              # features/step_definitions/web_steps.rb:219
+    Given the following countries exist:              # features/step_definitions/country_steps.rb:1
+      | name         | code |
+      | CountryOne   | c1   |
+      | CountryTwo   | c2   |
+      | CountryThree | c3   |
+      | CountryFour  | c4   |
+      | CountryFive  | c5   |
+    Given the following currencies exist:             # features/step_definitions/currency_steps.rb:1
+      | name     | code | country_code |
+      | CurOne   | cur1 | c1           |
+      | CurTwo   | cur2 | c2           |
+      | CurThree | cur3 | c3           |
+      | CurFour  | cur4 | c4           |
+      | CurFive  | cur5 | c5           |
+    Given user visited following countries:           # features/step_definitions/country_steps.rb:5
+      | code |
+      | c3   |
+      | c4   |
+      | c5   |
+    And I am on the currencies page                   # features/step_definitions/web_steps.rb:44
+    Then I should see the following currencies table: # features/step_definitions/currency_steps.rb:8
+      | Select all | Name     | Code | Status        |
+      |            | CurOne   | cur1 | Not Collected |
+      |            | CurTwo   | cur2 | Not Collected |
+      |            | CurThree | cur3 | Collected     |
+      |            | CurFour  | cur4 | Collected     |
+      |            | CurFive  | cur5 | Collected     |
+
+  @javascript
+  Scenario: Collect Currency                  # features/currencies.feature:37
+    Given I am a new, authenticated user      # features/step_definitions/web_steps.rb:219
+    Given the following countries exist:      # features/step_definitions/country_steps.rb:1
+      | name       | code |
+      | CountryOne | c1   |
+    Given the following currencies exist:     # features/step_definitions/currency_steps.rb:1
+      | name   | code | country_code |
+      | CurOne | cur1 | c1           |
+    And I am on the currencies page           # features/step_definitions/web_steps.rb:44
+    Then I should see "Not Collected"         # features/step_definitions/web_steps.rb:105
+    When I check "Select all"                 # features/step_definitions/web_steps.rb:89
+    And I press "Collect Selected Currencies" # features/step_definitions/web_steps.rb:52
+    Then I should see "Collected"             # features/step_definitions/web_steps.rb:105
+    And I should not see "Not Collected"      # features/step_definitions/web_steps.rb:123
+
+  Scenario: Filter Currencies                         # features/currencies.feature:53
+    Given I am a new, authenticated user              # features/step_definitions/web_steps.rb:219
+    Given the following countries exist:              # features/step_definitions/country_steps.rb:1
+      | name      | code |
+      | CountryA1 | c1   |
+      | CountryA2 | c2   |
+      | CountryB  | c3   |
+    Given the following currencies exist:             # features/step_definitions/currency_steps.rb:1
+      | name  | code | country_code |
+      | CurA1 | cur1 | c1           |
+      | CurA2 | cur2 | c2           |
+      | CurB  | cur3 | c3           |
+    Given user visited following countries:           # features/step_definitions/country_steps.rb:5
+      | code |
+      | c2   |
+      | c3   |
+    Given I am on the currencies page                 # features/step_definitions/web_steps.rb:44
+    When I fill in "Name or Country" with "A"         # features/step_definitions/web_steps.rb:60
+    And I press "Search"                              # features/step_definitions/web_steps.rb:52
+    Then I should see the following currencies table: # features/step_definitions/currency_steps.rb:8
+      | Select all | Name  | Code | Status        |
+      |            | CurA1 | cur1 | Not Collected |
+      |            | CurA2 | cur2 | Collected     |
+    And I follow "Name"                               # features/step_definitions/web_steps.rb:56
+    Then I should see the following currencies table: # features/step_definitions/currency_steps.rb:8
+      | Select all | Name ▲ | Code | Status        |
+      |            | CurA1  | cur1 | Not Collected |
+      |            | CurA2  | cur2 | Collected     |
+    And I follow "Name ▲"                             # features/step_definitions/web_steps.rb:56
+    Then I should see the following currencies table: # features/step_definitions/currency_steps.rb:8
+      | Select all | Name ▼ | Code | Status        |
+      |            | CurA2  | cur2 | Collected     |
+      |            | CurA1  | cur1 | Not Collected |
+    When I fill in "Name or Country" with ""          # features/step_definitions/web_steps.rb:60
+    And I press "Search"                              # features/step_definitions/web_steps.rb:52
+    Then I should see the following currencies table: # features/step_definitions/currency_steps.rb:8
+      | Select all | Name  | Code | Status        |
+      |            | CurA1 | cur1 | Not Collected |
+      |            | CurA2 | cur2 | Collected     |
+      |            | CurB  | cur3 | Collected     |
+
+6 scenarios (6 passed)
+57 steps (57 passed)
+0m18.255s
+
+
+
+
+
+
+
+.............**...............................................
+
+Pending:
+  User.not_visited_countries
+    # No reason given
+    # ./spec/models/user_spec.rb:20
+  User.not_collected_currencies
+    # No reason given
+    # ./spec/models/user_spec.rb:24
+
+Finished in 2.04 seconds
+62 examples, 0 failures, 2 pending
+
+Randomized with seed 61566
+
