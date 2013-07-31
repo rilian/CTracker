@@ -13,6 +13,18 @@ class CountriesController < ApplicationController
     end
   end
 
+  # GET /countries/index_table
+  # GET /countries/index_table.xml
+  def index_table
+    @q = Country.search(params[:q])
+    @countries = @q.result.includes(:user_countries)
+
+    respond_to do |format|
+      format.html { render '_index_table', layout: nil}
+      format.xml  { render '_index_table', :xml => @countries, layout: nil }
+    end
+  end
+
   # GET /countries/1
   # GET /countries/1.xml
   def show
@@ -24,9 +36,15 @@ class CountriesController < ApplicationController
     end
   end
 
-  # GET /countries/1
-  # GET /countries/1.xml
+  # GET /countries/pie_chart.js
   def pie_chart
+    respond_to do |format|
+      format.js  { render }
+    end
+  end
+
+  # GET /countries/line_chart.js
+  def line_chart
     respond_to do |format|
       format.js  { render }
     end

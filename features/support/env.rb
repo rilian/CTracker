@@ -46,3 +46,9 @@ end
 # Cleanup all if `cucumber` is running after unit test fixtures have been loaded
 
 [Country, Currency, User, UserCountry].map { |m| m.delete_all }
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.javascript_driver = :chrome
