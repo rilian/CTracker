@@ -75,7 +75,7 @@ Additional Table Features
 - [x] Reload line chart when visiting/collecting occur
 - [x] Cover Visit Country functionality with cucumber test
 - [x] Cover Currency Index functionality with cucumber test
-- [ ] Cover Collect Currency functionality with cucumber test
+- [x] Cover Collect Currency functionality with cucumber test
 - [ ] Cover empty filter functionality with cucumber tests
 
 Additional Charting Features

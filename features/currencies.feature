@@ -33,3 +33,21 @@ Feature: Manage currencies
       |            | CurFour  | cur4   | Collected     |
       |            | CurFive  | cur5   | Collected     |
 
+  @javascript
+  Scenario: Collect Currency
+    Given I am a new, authenticated user
+    Given the following countries exist:
+      | name       | code |
+      | CountryOne | c1   |
+    Given the following currencies exist:
+      | name   | code | country_code |
+      | CurOne | cur1 | c1           |
+    And I am on the currencies page
+
+    Then I should see "Not Collected"
+    When I check "Select all"
+    And I press "Collect Selected Currencies"
+    Then I should see "Collected"
+    And I should not see "Not Collected"
+
+
