@@ -6,7 +6,7 @@
         ['x', 'Countries Visited'],
 
         <% current_user.user_countries.each_with_index do |uc, index| %>
-          ['<%= uc.created_at.strftime('%d-%M-%Y') %>', <%= index + 1 %>],
+          ['<%= uc.created_at.strftime('%d-%m-%Y') %>', <%= index + 1 %>],
         <% end %>
       ]);
 
@@ -62,8 +62,8 @@
 
   <br/>
 
-  <%= form_tag update_multiple_countries_path, html: {method: :post}, remote: false do %>
-    <%= submit_tag 'Visit Selected Countries' %>
+  <%= form_tag visit_multiple_countries_path, html: { method: :post }, class: 'countries_form', remote: true do %>
+    <%= submit_tag 'Visit Selected Countries', :class => 'visit_countries' %>
 
     <table id="countries_table">
       <tr>
@@ -76,18 +76,18 @@
       </tr>
 
     <% @countries.each do |country| %>
-      <tr>
-        <td><%= check_box_tag('country_ids[]', country.id) unless country.visited_by_user?(current_user) %></td>
+      <tr data-country_id="<%= country.id %>">
+        <td class="checker"><%= check_box_tag('country_ids[]', country.id, false, { 'data-country_id' => country.id }) unless country.visited_by_user?(current_user) %></td>
         <td><%= country.name %></td>
         <td><%= country.code %></td>
-        <td><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
+        <td class="status"><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
         <td><%= link_to 'Show', country %></td>
         <td><%= link_to_if can?(:update, country), 'Edit', edit_country_path(country) %></td>
       </tr>
     <% end %>
     </table>
 
-    <%= submit_tag 'Visit Selected Countries' %>
+    <%= submit_tag 'Visit Selected Countries', :class => 'visit_countries' %>
 
   <% end %>
 </section>

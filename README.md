@@ -3,7 +3,7 @@ CurrencyTracker
 
 CurrencyTracker allows you to track your personal collection of world currencies, by tagging the countries that you've visited along your travels.
 
-[![Build Status](https://travis-ci.org/rilian/CTracker.png?branch=master)](https://travis-ci.org/rilian/CTracker)
+[![Build Status](https://travis-ci.org/rilian/CTracker.png?branch=master)](https://travis-ci.org/rilian/CTracker) [![Code Climate](https://codeclimate.com/github/rilian/CTracker.png)](https://codeclimate.com/github/rilian/CTracker)
 
 Features
 --------

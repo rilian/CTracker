@@ -7,7 +7,7 @@
         <% currencies_collected = 0 %>
         <% current_user.user_countries.each_with_index do |uc, index| %>
           <% if uc.country.currencies.size > 0 %>
-            ['<%= uc.created_at.strftime('%d-%M-%Y') %>', <%= index + 1 %>],
+            ['<%= uc.created_at.strftime('%d-%m-%Y') %>', <%= index + 1 %>],
             <% currencies_collected += 1 %>
           <% end %>
         <% end %>
@@ -56,8 +56,8 @@
       <td>
         <div>
           <%= search_form_for @q do |f| %>
-            <%= f.label :name_or_code_or_country_id_cont, 'Name or Country' %>
-            <%= f.text_field :name_or_code_or_country_id_cont %>
+            <%= f.label :name_or_code_or_country_id_or_country_code_cont, 'Name or Country' %>
+            <%= f.text_field :name_or_code_or_country_id_or_country_code_cont %>
             <%= f.submit %>
           <% end %>
         </div>
@@ -65,8 +65,8 @@
     </tr>
   </table>
 
-  <%= form_tag update_multiple_currencies_path, html: { method: :post }, remote: false do %>
-    <%= submit_tag 'Collect Selected Currencies' %>
+  <%= form_tag collect_multiple_currencies_path, html: { method: :post }, class: 'currencies_form', remote: true do %>
+    <%= submit_tag 'Collect Selected Currencies', :class => 'collect_currencies' %>
     <table>
       <tr>
         <th>
@@ -80,15 +80,15 @@
       </tr>
 
       <% @currencies.each do |currency| %>
-        <tr>
-          <td><%= check_box_tag('currency_ids[]', currency.id) unless (currency.collected_by_user?(current_user) || currency.country.blank?) %></td>
+        <tr data-currency_id="<%= currency.id %>">
+          <td class="checker"><%= check_box_tag('currency_ids[]', currency.id, false, {'data-currency_id' => currency.id}) unless (currency.collected_by_user?(current_user) || currency.country.blank?) %></td>
           <td><%= currency.name %></td>
           <td><%= currency.code %></td>
-          <td><%= currency.collected_by_user?(current_user) ? 'Collected' : 'Not Collected' %></td>
+          <td class="status"><%= currency.collected_by_user?(current_user) ? 'Collected' : 'Not Collected' %></td>
           <td><%= link_to 'Show', currency %></td>
         </tr>
       <% end %>
     </table>
-    <%= submit_tag 'Collect Selected Currencies' %>
+    <%= submit_tag 'Collect Selected Currencies', :class => 'collect_currencies' %>
   <% end %>
 </section>

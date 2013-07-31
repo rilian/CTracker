@@ -29,6 +29,10 @@ Actions
 * Added ability to edit, update multiple countries
 * Done visit multiple countries with page reload
 * Done collect multiple currencies with page reload
+* Added CodeClimate badge
+* Controller specs on visit multiple and collect multiple
+* Working on updating each row without page reload
+* Collect currency and Visit country now work without page reload
 
 TODO
 ----
@@ -68,6 +72,7 @@ Additional Charting Features
 - [x] A line graph over Countries table showing number of countries visited by time
 - [x] A line graph over Currencies table showing number of currencies collected by time
 - [ ] Chart should be updated instantly when visiting/collecting performed
+- [ ] Cover functionality with cucumber tests
 
 General
 

@@ -8,7 +8,10 @@ describe Currency do
   it { should have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
   it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
 
+  it { should have_db_index(:name) }
+  it { should have_db_index(:code) }
   it { should have_db_index(:country_id) }
+  it { should have_db_index(:country_code) }
 
   it { should allow_mass_assignment_of :name }
   it { should allow_mass_assignment_of :code }

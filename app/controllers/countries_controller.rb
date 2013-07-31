@@ -15,12 +15,14 @@ class CountriesController < ApplicationController
 
   # GET /countries/1
   # GET /countries/1.xml
+  # GET /countries/1.json
   def show
     @country = Country.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @country }
+      format.json { render :json => @country.as_json.merge(visited: @country.visited_by_user?(current_user)) }
     end
   end
 
@@ -61,7 +63,7 @@ class CountriesController < ApplicationController
     end
   end
 
-  def update_multiple
+  def visit_multiple
     @countries = Country.find(params[:country_ids])
     @countries.each do |country|
       country.visitor_id = current_user.id
@@ -69,6 +71,6 @@ class CountriesController < ApplicationController
       country.save
     end
 
-    redirect_to countries_path, :notice => 'Countries were successfully visited'
+    render nothing: true
   end
 end
