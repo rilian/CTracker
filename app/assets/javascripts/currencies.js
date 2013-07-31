@@ -14,3 +14,15 @@ $(".collect_currencies").click(function (e) {
   $.ajax({url: '/currencies/pie_chart'});
   $.ajax({url: '/currencies/line_chart'});
 });
+
+// Render filter results
+$(".search_btn").click(function (e) {
+  e.preventDefault();
+
+  $.ajax({
+    url: '/currencies/index_table',
+    data: $('form.currency_search').serialize()
+  }).done(function (data) {
+      $('#currencies_table').html(data);
+    });
+});

@@ -13,6 +13,18 @@ class CountriesController < ApplicationController
     end
   end
 
+  # GET /countries/index_table
+  # GET /countries/index_table.xml
+  def index_table
+    @q = Country.search(params[:q])
+    @countries = @q.result.includes(:user_countries)
+
+    respond_to do |format|
+      format.html { render '_index_table', layout: nil}
+      format.xml  { render '_index_table', :xml => @countries, layout: nil }
+    end
+  end
+
   # GET /countries/1
   # GET /countries/1.xml
   def show

@@ -20,7 +20,7 @@
           <%= search_form_for @q do |f| %>
             <%= f.label :name_or_code_cont, 'Name or Country' %>
             <%= f.text_field :name_or_code_cont %>
-            <%= f.submit %>
+            <%= f.submit 'Search', { class: 'search_btn' } %>
           <% end %>
         </div>
       </td>
@@ -32,7 +32,7 @@
   <%= form_tag visit_multiple_countries_path, html: { method: :post }, class: 'countries_form', remote: true do %>
     <%= submit_tag 'Visit Selected Countries', :class => 'visit_countries' %>
     <table id="countries_table">
-      <%= render 'countries_table' %>
+      <%= render 'index_table' %>
     </table>
   <% end %>
 </section>

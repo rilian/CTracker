@@ -13,6 +13,18 @@ class CurrenciesController < ApplicationController
     end
   end
 
+  # GET /currencies/index_table
+  # GET /currencies/index_table.xml
+  def index_table
+    @q = Currency.search(params[:q])
+    @currencies = @q.result
+
+    respond_to do |format|
+      format.html { render '_index_table', layout: nil }
+      format.xml { render '_index_table', :xml => @currencies, layout: nil }
+    end
+  end
+
   # GET /currencies/1
   # GET /currencies/1.xml
   def show
