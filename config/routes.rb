@@ -7,6 +7,7 @@ CurrencyTracker::Application.routes.draw do
     collection do
       post :visit_multiple
       get :pie_chart
+      get :line_chart
     end
   end
 

@@ -24,9 +24,15 @@ class CountriesController < ApplicationController
     end
   end
 
-  # GET /countries/1
-  # GET /countries/1.xml
+  # GET /countries/pie_chart.js
   def pie_chart
+    respond_to do |format|
+      format.js  { render }
+    end
+  end
+
+  # GET /countries/line_chart.js
+  def line_chart
     respond_to do |format|
       format.js  { render }
     end

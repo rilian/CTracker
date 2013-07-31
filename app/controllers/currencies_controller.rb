@@ -24,6 +24,20 @@ class CurrenciesController < ApplicationController
     end
   end
 
+  # GET /currencies/pie_chart.js
+  def pie_chart
+    respond_to do |format|
+      format.js { render }
+    end
+  end
+
+  # GET /currencies/line_chart.js
+  def line_chart
+    respond_to do |format|
+      format.js { render }
+    end
+  end
+
   def collect_multiple
     @currencies = Currency.find(params[:currency_ids])
     @currencies.each do |currency|
