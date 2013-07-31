@@ -66,7 +66,9 @@ Additional Table Features
 - [x] No page reloads occur when Visiting or Collecting
 - [x] No page reloads occur when filtering occur
 - [ ] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
-- [ ] Cover functionality with cucumber tests
+- [ ] Cover Visit Country functionality with cucumber tests
+- [ ] Cover Collect Currency functionality with cucumber tests
+- [ ] Cover empty filter functionality with cucumber tests
 
 Additional Charting Features
 
