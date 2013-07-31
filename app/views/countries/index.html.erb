@@ -6,7 +6,7 @@
         ['x', 'Countries Visited'],
 
         <% current_user.user_countries.each_with_index do |uc, index| %>
-          ['<%= uc.created_at.strftime('%d-%M-%Y') %>', <%= index + 1 %>],
+          ['<%= uc.created_at.strftime('%d-%m-%Y') %>', <%= index + 1 %>],
         <% end %>
       ]);
 

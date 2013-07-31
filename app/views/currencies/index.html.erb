@@ -7,7 +7,7 @@
         <% currencies_collected = 0 %>
         <% current_user.user_countries.each_with_index do |uc, index| %>
           <% if uc.country.currencies.size > 0 %>
-            ['<%= uc.created_at.strftime('%d-%M-%Y') %>', <%= index + 1 %>],
+            ['<%= uc.created_at.strftime('%d-%m-%Y') %>', <%= index + 1 %>],
             <% currencies_collected += 1 %>
           <% end %>
         <% end %>
@@ -56,8 +56,8 @@
       <td>
         <div>
           <%= search_form_for @q do |f| %>
-            <%= f.label :name_or_code_or_country_id_cont, 'Name or Country' %>
-            <%= f.text_field :name_or_code_or_country_id_cont %>
+            <%= f.label :name_or_code_or_country_id_or_country_code_cont, 'Name or Country' %>
+            <%= f.text_field :name_or_code_or_country_id_or_country_code_cont %>
             <%= f.submit %>
           <% end %>
         </div>
