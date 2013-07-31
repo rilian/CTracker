@@ -5,13 +5,13 @@ CurrencyTracker::Application.routes.draw do
 
   resources :countries, :except => [:new, :destroy] do
     collection do
-      post :update_multiple
+      post :visit_multiple
     end
   end
 
   resources :currencies, :only => [:index, :show] do
     collection do
-      post :update_multiple
+      post :collect_multiple
     end
   end
 

@@ -63,7 +63,7 @@ class CountriesController < ApplicationController
     end
   end
 
-  def update_multiple
+  def visit_multiple
     @countries = Country.find(params[:country_ids])
     @countries.each do |country|
       country.visitor_id = current_user.id
