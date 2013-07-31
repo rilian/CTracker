@@ -69,7 +69,10 @@
     <%= submit_tag 'Collect Selected Currencies' %>
     <table>
       <tr>
-        <th><input type="checkbox" disabled="disabled"/>Select all</th>
+        <th>
+          <%= label_tag :select_all %>
+          <%= check_box_tag :select_all %>
+        </th>
         <th><%= sort_link @q, :name %></th>
         <th><%= sort_link @q, :code %></th>
         <th>Status</th>
