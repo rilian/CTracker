@@ -55,12 +55,13 @@ Additional Table Features
 - [x] Filter `Currency` by name, add a search box on index page
 - [x] Integration test on filtering
 - [x] Ordering on `Countries#Index` and `Countries#Index` pages
-- [ ] Visit `Country` button to perform visiting of selected by checkbox `Countries` on `Countries#Index` page
-- [ ] Collect `Currency` button to perform collecting of selected by checkbox `Currencies` on `Currency#Index` page
-- [ ] Make sure only visited/collected row is updated
-- [ ] No page reloads occur when filtering occur
-- [ ] When the filter is cleared, all entities are displayed again
-- [ ] Check All feature on Country and Currency pages
+- [x] Visit checked `Country` button to perform visiting of selected by checkbox `Countries` on `Countries#Index` page
+- [x] Collect checked `Currency` button to perform collecting of selected by checkbox `Currencies` on `Currency#Index` page
+- [x] Check All feature on Country and Currency pages
+- [x] No page reloads occur when Visiting or Collecting
+- [x] No page reloads occur when filtering occur
+- [ ] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
+- [ ] Cover functionality with cucumber tests
 
 Additional Charting Features
 
