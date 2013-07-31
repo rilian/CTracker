@@ -68,10 +68,11 @@ Additional Table Features
 - [x] Check All feature on Country and Currency pages
 - [x] No page reloads occur when Visiting or Collecting
 - [x] No page reloads occur when filtering occur
+- [x] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
 - [x] Reload line chart when visiting/collecting occur
-- [ ] Cover Visit Country functionality with cucumber tests
-- [ ] Cover Collect Currency functionality with cucumber tests
-- [ ] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
+- [x] Cover Visit Country functionality with cucumber test
+- [ ] Cover Currency Index functionality with cucumber test
+- [ ] Cover Collect Currency functionality with cucumber test
 - [ ] Cover empty filter functionality with cucumber tests
 
 Additional Charting Features
@@ -82,6 +83,6 @@ Additional Charting Features
 
 General
 
-- [ ] All features done
+- [x] All features done
 - [ ] All tests pass
 - [ ] New functionality covered with tests
