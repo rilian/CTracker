@@ -10,4 +10,8 @@ $(".visit_countries").click(function (e) {
       container.children('td.checker').html('');
     }
   });
+
+  $.ajax({url: '/countries/pie_chart'});
 });
+
+

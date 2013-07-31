@@ -10,4 +10,6 @@ $(".collect_currencies").click(function (e) {
       container.children('td.checker').html('');
     }
   });
+
+  $.ajax({url: '/currencies/pie_chart'});
 });

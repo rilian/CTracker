@@ -1,0 +1,6 @@
+$('#visited_countries_chart').
+  html("<%= escape_javascript render('countries/pie_chart') %>");
+
+$('.simple_pie_chart').each(function () {
+  SimplePieChart.initialize(this);
+});

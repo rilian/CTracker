@@ -11,8 +11,8 @@ class Ability
       can :manage, :all
     else
       can :read, [Country, Currency]
-      can :visit_multiple, Country
-      can :collect_multiple, Currency
+      can [:pie_chart, :visit_multiple], Country
+      can [:pie_chart, :collect_multiple], Currency
       can :manage, UserCountry, user_id: user.id
     end
   end

@@ -5,7 +5,7 @@ class CountriesController < ApplicationController
   # GET /countries.xml
   def index
     @q = Country.search(params[:q])
-    @countries = @q.result
+    @countries = @q.result.includes(:user_countries)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,13 +15,20 @@ class CountriesController < ApplicationController
 
   # GET /countries/1
   # GET /countries/1.xml
-  # GET /countries/1.json
   def show
     @country = Country.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @country }
+    end
+  end
+
+  # GET /countries/1
+  # GET /countries/1.xml
+  def pie_chart
+    respond_to do |format|
+      format.js  { render }
     end
   end
 

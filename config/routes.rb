@@ -6,12 +6,14 @@ CurrencyTracker::Application.routes.draw do
   resources :countries, :except => [:new, :destroy] do
     collection do
       post :visit_multiple
+      get :pie_chart
     end
   end
 
   resources :currencies, :only => [:index, :show] do
     collection do
       post :collect_multiple
+      get :pie_chart
     end
   end
 
