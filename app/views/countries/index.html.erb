@@ -62,23 +62,32 @@
 
   <br/>
 
-  <table id="countries_table">
-    <tr>
-      <th><%= sort_link @q, :name %></th>
-      <th><%= sort_link @q, :code %></th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-    </tr>
+  <%= form_tag update_multiple_countries_path, html: {method: :post}, remote: false do %>
+    <%= submit_tag 'Visit Selected Countries' %>
 
-  <% @countries.each do |country| %>
-    <tr>
-      <td><%= country.name %></td>
-      <td><%= country.code %></td>
-      <td><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
-      <td><%= link_to 'Show', country %></td>
-      <td><%= link_to_if can?(:update, country), 'Edit', edit_country_path(country) %></td>
-    </tr>
+    <table id="countries_table">
+      <tr>
+        <th><input type="checkbox" disabled="disabled"/>Select all</th>
+        <th><%= sort_link @q, :name %></th>
+        <th><%= sort_link @q, :code %></th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @countries.each do |country| %>
+      <tr>
+        <td><%= check_box_tag('country_ids[]', country.id) unless country.visited_by_user?(current_user) %></td>
+        <td><%= country.name %></td>
+        <td><%= country.code %></td>
+        <td><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
+        <td><%= link_to 'Show', country %></td>
+        <td><%= link_to_if can?(:update, country), 'Edit', edit_country_path(country) %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <%= submit_tag 'Visit Selected Countries' %>
+
   <% end %>
-  </table>
 </section>

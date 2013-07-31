@@ -19,12 +19,12 @@ Feature: Manage countries
       |c5|
     And I am on the countries page
     Then I should see the following countries table:
-      |Name|Code|Status|
-      |CountryOne|c1|Not Visited|
-      |CountryTwo|c2|Not Visited|
-      |CountryThree|c3|Visited|
-      |CountryFour|c4|Visited|
-      |CountryFive|c5|Visited|
+      |Select all|Name        |Code|Status     |
+      |          |CountryOne  |c1  |Not Visited|
+      |          |CountryTwo  |c2  |Not Visited|
+      |          |CountryThree|c3  |Visited    |
+      |          |CountryFour |c4  |Visited    |
+      |          |CountryFive |c5  |Visited    |
 
 #  Scenario: Visit Country
 #    Given I am a new, authenticated user
@@ -53,16 +53,16 @@ Feature: Manage countries
     When I fill in "Name or Country" with "A"
     And I press "Search"
     Then I should see the following countries table:
-      | Name      | Code | Status      |
-      | CountryA1 | c1   | Not Visited |
-      | CountryA2 | c2   | Visited     |
+      | Select all | Name      | Code | Status      |
+      |            | CountryA1 | c1   | Not Visited |
+      |            | CountryA2 | c2   | Visited     |
     And I follow "Name"
     Then I should see the following countries table:
-      | Name ▲   | Code | Status      |
-      | CountryA1 | c1   | Not Visited |
-      | CountryA2 | c2   | Visited     |
+      | Select all | Name ▲   | Code | Status      |
+      |            | CountryA1 | c1   | Not Visited |
+      |            | CountryA2 | c2   | Visited     |
     And I follow "Name ▲"
     Then I should see the following countries table:
-      | Name ▼   | Code | Status      |
-      | CountryA2 | c2   | Visited     |
-      | CountryA1 | c1   | Not Visited |
+      | Select all | Name ▼   | Code | Status      |
+      |            | CountryA2 | c2   | Visited     |
+      |            | CountryA1 | c1   | Not Visited |
