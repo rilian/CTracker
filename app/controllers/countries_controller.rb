@@ -15,12 +15,14 @@ class CountriesController < ApplicationController
 
   # GET /countries/1
   # GET /countries/1.xml
+  # GET /countries/1.json
   def show
     @country = Country.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @country }
+      format.json { render :json => @country.as_json.merge(visited: @country.visited_by_user?(current_user)) }
     end
   end
 
