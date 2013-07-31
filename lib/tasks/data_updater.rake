@@ -10,11 +10,11 @@ namespace :data_updater do
     DataUpdater.instance.update
 
     # To speedup development
-    if Rails.env.development?
-      [Country, Currency].each do |klass|
-        klass.all[15..(klass.all.size - 1)].each(&:destroy)
-      end
-    end
+    #if Rails.env.development?
+    #  [Country, Currency].each do |klass|
+    #    klass.all[15..(klass.all.size - 1)].each(&:destroy)
+    #  end
+    #end
 
     puts "Generated #{Country.count} countries and #{Currency.count} currencies"
   end

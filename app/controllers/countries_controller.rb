@@ -22,7 +22,6 @@ class CountriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @country }
-      format.json { render :json => @country.as_json.merge(visited: @country.visited_by_user?(current_user)) }
     end
   end
 
