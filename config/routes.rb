@@ -5,12 +5,15 @@ CurrencyTracker::Application.routes.draw do
 
   resources :countries, :except => [:new, :destroy] do
     collection do
-      post :edit_multiple
-      put :update_multiple
+      post :update_multiple
     end
   end
 
-  resources :currencies, :only => [:index, :show]
+  resources :currencies, :only => [:index, :show] do
+    collection do
+      post :update_multiple
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

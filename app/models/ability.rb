@@ -11,7 +11,7 @@ class Ability
       can :manage, :all
     else
       can :read, [Country, Currency]
-      can [:edit_multiple, :update_multiple], Country
+      can :update_multiple, [Country, Currency]
       can :manage, UserCountry, user_id: user.id
     end
   end

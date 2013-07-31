@@ -61,11 +61,14 @@ class CountriesController < ApplicationController
     end
   end
 
-  def edit_multiple
-    #
-  end
-
   def update_multiple
-    #
+    @countries = Country.find(params[:country_ids])
+    @countries.each do |country|
+      country.visitor_id = current_user.id
+      country.visited = true
+      country.save
+    end
+
+    redirect_to countries_path, :notice => 'Countries were successfully visited'
   end
 end

@@ -62,7 +62,8 @@
 
   <br/>
 
-  <%= form_tag edit_multiple_countries_path do %>
+  <%= form_tag update_multiple_countries_path, html: {method: :post}, remote: false do %>
+    <%= submit_tag 'Visit Selected Countries' %>
 
     <table id="countries_table">
       <tr>
@@ -76,7 +77,7 @@
 
     <% @countries.each do |country| %>
       <tr>
-        <td><%= check_box_tag 'country_ids[]', country.id %></td>
+        <td><%= check_box_tag('country_ids[]', country.id) unless country.visited_by_user?(current_user) %></td>
         <td><%= country.name %></td>
         <td><%= country.code %></td>
         <td><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
