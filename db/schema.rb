@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729220155) do
+ActiveRecord::Schema.define(:version => 20130731153920) do
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130729220155) do
   end
 
   add_index "countries", ["code"], :name => "index_countries_on_code"
+  add_index "countries", ["name"], :name => "index_countries_on_name"
 
   create_table "currencies", :force => true do |t|
     t.string   "name"
@@ -31,7 +32,10 @@ ActiveRecord::Schema.define(:version => 20130729220155) do
     t.string   "country_code"
   end
 
+  add_index "currencies", ["code"], :name => "index_currencies_on_code"
+  add_index "currencies", ["country_code"], :name => "index_currencies_on_country_code"
   add_index "currencies", ["country_id"], :name => "index_currencies_on_country_id"
+  add_index "currencies", ["name"], :name => "index_currencies_on_name"
 
   create_table "user_countries", :id => false, :force => true do |t|
     t.integer  "user_id",    :null => false

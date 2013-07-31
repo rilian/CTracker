@@ -19,7 +19,7 @@ describe 'User' do
     it { should be_able_to(:manage, own_user_country) }
     it { should_not be_able_to(:manage, other_user_country) }
 
-    it { should be_able_to(:update_multiple, Country.new) }
-    it { should be_able_to(:update_multiple, Currency.new) }
+    it { should be_able_to(:visit_multiple, Country.new) }
+    it { should be_able_to(:collect_multiple, Currency.new) }
   end
 end
