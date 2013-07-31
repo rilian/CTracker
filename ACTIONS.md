@@ -27,6 +27,8 @@ Actions
 * Add google chart with history of currency collections. Note that when country visited it may not have currency
 * Starting working on checkbox to visit country
 * Added ability to edit, update multiple countries
+* Done visit multiple countries with page reload
+* Done collect multiple currencies with page reload
 
 TODO
 ----
