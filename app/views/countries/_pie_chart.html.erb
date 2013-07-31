@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <th>Visited</th>
+    <td><%= current_user.countries.count %></td>
+  </tr>
+  <tr>
+    <th>Not Visited</th>
+    <td><%= current_user.not_visited_countries.count %></td>
+  </tr>
+</table>
