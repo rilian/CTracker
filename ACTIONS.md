@@ -32,6 +32,7 @@ Actions
 * Added CodeClimate badge
 * Controller specs on visit multiple and collect multiple
 * Working on updating each row without page reload
+* Collect currency and Visit country now work without page reload
 
 TODO
 ----
