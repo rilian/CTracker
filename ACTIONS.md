@@ -76,7 +76,7 @@ Additional Table Features
 - [x] Cover Visit Country functionality with cucumber test
 - [x] Cover Currency Index functionality with cucumber test
 - [x] Cover Collect Currency functionality with cucumber test
-- [ ] Cover empty filter functionality with cucumber tests
+- [x] Cover empty filter functionality with cucumber tests
 
 Additional Charting Features
 
@@ -87,5 +87,5 @@ Additional Charting Features
 General
 
 - [x] All features done
-- [ ] All tests pass
-- [ ] New functionality covered with tests
+- [x] All tests pass
+- [x] New functionality covered with tests
