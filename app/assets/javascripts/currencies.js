@@ -12,4 +12,5 @@ $(".collect_currencies").click(function (e) {
   });
 
   $.ajax({url: '/currencies/pie_chart'});
+  $.ajax({url: '/currencies/line_chart'});
 });

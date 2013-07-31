@@ -12,6 +12,7 @@ $(".visit_countries").click(function (e) {
   });
 
   $.ajax({url: '/countries/pie_chart'});
+  $.ajax({url: '/countries/line_chart'});
 });
 
 
