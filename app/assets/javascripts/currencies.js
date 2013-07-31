@@ -23,6 +23,7 @@ $(".search_btn").click(function (e) {
     url: '/currencies/index_table',
     data: $('form.currency_search').serialize()
   }).done(function (data) {
-      $('#currencies_table').html(data);
-    });
+    $('#currencies_table').html(data);
+    bind_select_all();
+  });
 });

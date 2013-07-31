@@ -24,5 +24,6 @@ $(".search_btn").click(function (e) {
     data: $('form.country_search').serialize()
   }).done(function(data) {
     $('#countries_table').html(data);
+    bind_select_all();
   });
 });
