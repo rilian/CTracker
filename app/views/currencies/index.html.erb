@@ -65,21 +65,27 @@
     </tr>
   </table>
 
-  <table>
-    <tr>
-      <th><%= sort_link @q, :name %></th>
-      <th><%= sort_link @q, :code %></th>
-      <th>Status</th>
-      <th></th>
-    </tr>
+  <%= form_tag update_multiple_currencies_path, html: { method: :post }, remote: false do %>
+    <%= submit_tag 'Collect Selected Currencies' %>
+    <table>
+      <tr>
+        <th><input type="checkbox" disabled="disabled"/>Select all</th>
+        <th><%= sort_link @q, :name %></th>
+        <th><%= sort_link @q, :code %></th>
+        <th>Status</th>
+        <th></th>
+      </tr>
 
-  <% @currencies.each do |currency| %>
-    <tr>
-      <td><%= currency.name %></td>
-      <td><%= currency.code %></td>
-      <td><%= currency.collected_by_user?(current_user) ? 'Collected' : 'Not Collected' %></td>
-      <td><%= link_to 'Show', currency %></td>
-    </tr>
+      <% @currencies.each do |currency| %>
+        <tr>
+          <td><%= check_box_tag('currency_ids[]', currency.id) unless (currency.collected_by_user?(current_user) || currency.country.blank?) %></td>
+          <td><%= currency.name %></td>
+          <td><%= currency.code %></td>
+          <td><%= currency.collected_by_user?(current_user) ? 'Collected' : 'Not Collected' %></td>
+          <td><%= link_to 'Show', currency %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= submit_tag 'Collect Selected Currencies' %>
   <% end %>
-  </table>
 </section>

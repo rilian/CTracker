@@ -23,6 +23,12 @@ Actions
 * Cover filtering and ordering with cucumber tests
 * Modify schema to use integer primary keys, to avoid hacks around with connecting models
 * Properly link Currency to Country via country_id field
+* Add google chart with history of country visits
+* Add google chart with history of currency collections. Note that when country visited it may not have currency
+* Starting working on checkbox to visit country
+* Added ability to edit, update multiple countries
+* Done visit multiple countries with page reload
+* Done collect multiple currencies with page reload
 
 TODO
 ----
