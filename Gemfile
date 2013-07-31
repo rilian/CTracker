@@ -17,6 +17,7 @@ end
 group :test do
   gem 'cucumber'
   gem 'cucumber-rails', require: false
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec-rails'

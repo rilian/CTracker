@@ -1,5 +1,6 @@
 Given /the following countries exist:/ do |countries|
   Country.create!(countries.hashes)
+  UserCountry.delete_all
 end
 
 Given /user visited following countries:/ do |countries|
