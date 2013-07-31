@@ -5,7 +5,9 @@ $(".visit_countries").click(function (e) {
 
   $(':checkbox').each(function () {
     if (this.checked) {
-      alert('visited ' + $(this).data('country_id'));
+      var container = $('tr[data-country_id=' + $(this).data('country_id') + ']');
+      container.children('td.status').html('Visited');
+      container.children('td.checker').html('');
     }
   });
 });

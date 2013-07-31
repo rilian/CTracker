@@ -76,11 +76,11 @@
       </tr>
 
     <% @countries.each do |country| %>
-      <tr>
-        <td><%= check_box_tag('country_ids[]', country.id, false, { 'data-country_id' => country.id }) unless country.visited_by_user?(current_user) %></td>
+      <tr data-country_id="<%= country.id %>">
+        <td class="checker"><%= check_box_tag('country_ids[]', country.id, false, { 'data-country_id' => country.id }) unless country.visited_by_user?(current_user) %></td>
         <td><%= country.name %></td>
         <td><%= country.code %></td>
-        <td><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
+        <td class="status"><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
         <td><%= link_to 'Show', country %></td>
         <td><%= link_to_if can?(:update, country), 'Edit', edit_country_path(country) %></td>
       </tr>
