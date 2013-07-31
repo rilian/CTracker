@@ -29,27 +29,8 @@
 
   <%= form_tag collect_multiple_currencies_path, html: { method: :post }, class: 'currencies_form', remote: true do %>
     <%= submit_tag 'Collect Selected Currencies', :class => 'collect_currencies' %>
-    <table>
-      <tr>
-        <th>
-          <%= label_tag :select_all %>
-          <%= check_box_tag :select_all %>
-        </th>
-        <th><%= sort_link @q, :name %></th>
-        <th><%= sort_link @q, :code %></th>
-        <th>Status</th>
-        <th></th>
-      </tr>
-
-      <% @currencies.each do |currency| %>
-        <tr data-currency_id="<%= currency.id %>">
-          <td class="checker"><%= check_box_tag('currency_ids[]', currency.id, false, {'data-currency_id' => currency.id}) unless (currency.collected_by_user?(current_user) || currency.country.blank?) %></td>
-          <td><%= currency.name %></td>
-          <td><%= currency.code %></td>
-          <td class="status"><%= currency.collected_by_user?(current_user) ? 'Collected' : 'Not Collected' %></td>
-          <td><%= link_to 'Show', currency %></td>
-        </tr>
-      <% end %>
+    <table id="currencies_table">
+      <%= render 'currencies_table' %>
     </table>
   <% end %>
 </section>

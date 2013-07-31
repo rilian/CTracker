@@ -31,28 +31,8 @@
 
   <%= form_tag visit_multiple_countries_path, html: { method: :post }, class: 'countries_form', remote: true do %>
     <%= submit_tag 'Visit Selected Countries', :class => 'visit_countries' %>
-
     <table id="countries_table">
-      <tr>
-        <th><label for="select_all">Select all</label><input id="select_all" name="select_all" type="checkbox"></th>
-        <th><%= sort_link @q, :name %></th>
-        <th><%= sort_link @q, :code %></th>
-        <th>Status</th>
-        <th></th>
-        <th></th>
-      </tr>
-
-    <% @countries.each do |country| %>
-      <tr data-country_id="<%= country.id %>">
-        <td class="checker"><%= check_box_tag('country_ids[]', country.id, false, { 'data-country_id' => country.id }) unless country.visited_by_user?(current_user) %></td>
-        <td><%= country.name %></td>
-        <td><%= country.code %></td>
-        <td class="status"><%= country.visited_by_user?(current_user) ? 'Visited' : 'Not Visited' %></td>
-        <td><%= link_to 'Show', country %></td>
-        <td><%= link_to_if can?(:update, country), 'Edit', edit_country_path(country) %></td>
-      </tr>
-    <% end %>
+      <%= render 'countries_table' %>
     </table>
-
   <% end %>
 </section>
