@@ -74,7 +74,7 @@ Additional Table Features
 - [x] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
 - [x] Reload line chart when visiting/collecting occur
 - [x] Cover Visit Country functionality with cucumber test
-- [ ] Cover Currency Index functionality with cucumber test
+- [x] Cover Currency Index functionality with cucumber test
 - [ ] Cover Collect Currency functionality with cucumber test
 - [ ] Cover empty filter functionality with cucumber tests
 
