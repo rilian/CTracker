@@ -1,0 +1,6 @@
+$('#collected_currencies_chart').
+    html("<%= escape_javascript render('currencies/pie_chart') %>");
+
+$('.simple_pie_chart').each(function () {
+  SimplePieChart.initialize(this);
+});
