@@ -60,4 +60,12 @@ class CountriesController < ApplicationController
       end
     end
   end
+
+  def edit_multiple
+    #
+  end
+
+  def update_multiple
+    #
+  end
 end
