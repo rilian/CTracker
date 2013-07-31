@@ -37,6 +37,9 @@ Actions
 * Implemented reload line charts without reloading page
 * Wrote cucumber test on instant visiting/collecting. Need selenium to run the scenario
 * Installing chromedriver via `brew install chromedriver`. Works like a charm
+* No luck with JS cucumber on TravisCI
+* Implement filtering without page reload
+* Implement currencies Index cucumber test
 
 TODO
 ----
