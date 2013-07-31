@@ -13,6 +13,18 @@ class CurrenciesController < ApplicationController
     end
   end
 
+  # GET /currencies/index_table
+  # GET /currencies/index_table.xml
+  def index_table
+    @q = Currency.search(params[:q])
+    @currencies = @q.result
+
+    respond_to do |format|
+      format.html { render '_index_table', layout: nil }
+      format.xml { render '_index_table', :xml => @currencies, layout: nil }
+    end
+  end
+
   # GET /currencies/1
   # GET /currencies/1.xml
   def show
@@ -21,6 +33,20 @@ class CurrenciesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @currency }
+    end
+  end
+
+  # GET /currencies/pie_chart.js
+  def pie_chart
+    respond_to do |format|
+      format.js { render }
+    end
+  end
+
+  # GET /currencies/line_chart.js
+  def line_chart
+    respond_to do |format|
+      format.js { render }
     end
   end
 

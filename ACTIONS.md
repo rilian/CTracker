@@ -34,6 +34,12 @@ Actions
 * Working on updating each row without page reload
 * Collect currency and Visit country now work without page reload
 * Implemented reload pie charts without reloading page
+* Implemented reload line charts without reloading page
+* Wrote cucumber test on instant visiting/collecting. Need selenium to run the scenario
+* Installing chromedriver via `brew install chromedriver`. Works like a charm
+* No luck with JS cucumber on TravisCI
+* Implement filtering without page reload
+* Implement currencies Index cucumber test
 
 TODO
 ----
@@ -65,11 +71,12 @@ Additional Table Features
 - [x] Check All feature on Country and Currency pages
 - [x] No page reloads occur when Visiting or Collecting
 - [x] No page reloads occur when filtering occur
-- [ ] Reload line chart when visiting/collecting occur
-- [ ] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
-- [ ] Cover Visit Country functionality with cucumber tests
-- [ ] Cover Collect Currency functionality with cucumber tests
-- [ ] Cover empty filter functionality with cucumber tests
+- [x] When the filter is cleared, all entities are displayed again (i.e. filtering performed)
+- [x] Reload line chart when visiting/collecting occur
+- [x] Cover Visit Country functionality with cucumber test
+- [x] Cover Currency Index functionality with cucumber test
+- [x] Cover Collect Currency functionality with cucumber test
+- [x] Cover empty filter functionality with cucumber tests
 
 Additional Charting Features
 
@@ -79,6 +86,6 @@ Additional Charting Features
 
 General
 
-- [ ] All features done
-- [ ] All tests pass
-- [ ] New functionality covered with tests
+- [x] All features done
+- [x] All tests pass
+- [x] New functionality covered with tests

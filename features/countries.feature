@@ -26,16 +26,19 @@ Feature: Manage countries
       |          |CountryFour |c4  |Visited    |
       |          |CountryFive |c5  |Visited    |
 
-#  Scenario: Visit Country
-#    Given I am a new, authenticated user
-#    Given I am on a country page
-#    When I follow "Edit"
-#    Then I should see "Visited"
-#    And I check "Visited"
-#    Then the "Visited" checkbox should be checked
-#    And I press "Update Country"
-#    Given I am on a country page
-#    Then I should see "Status: Visited"
+  @javascript
+  Scenario: Visit Country
+    Given I am a new, authenticated user
+    Given the following countries exist:
+      | name       | code |
+      | CountryOne | c1   |
+    And I am on the countries page
+
+    Then I should see "Not Visited"
+    When I check "Select all"
+    And I press "Visit Selected Countries"
+    Then I should see "Visited"
+    And I should not see "Not Visited"
 
   Scenario: Filter Countries
     Given I am a new, authenticated user
@@ -66,3 +69,11 @@ Feature: Manage countries
       | Select all | Name ▼   | Code | Status      |
       |            | CountryA2 | c2   | Visited     |
       |            | CountryA1 | c1   | Not Visited |
+
+    When I fill in "Name or Country" with ""
+    And I press "Search"
+    Then I should see the following countries table:
+      | Select all | Name         | Code | Status      |
+      |            | CountryA1   | c1   | Not Visited |
+      |            | CountryA2   | c2   | Visited     |
+      |            | CountryB    | c3   | Visited     |

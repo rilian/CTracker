@@ -1,0 +1,18 @@
+var data = google.visualization.arrayToDataTable([
+  ['x', 'Currencies Collected'],
+  <% current_user.user_countries.each_with_index do |uc, index| %>
+    <% if uc.country.currencies.size > 0 %>
+      ['<%= uc.created_at.strftime('%d-%m-%Y') %>', <%= index + 1 %>],
+    <% end %>
+  <% end %>
+]);
+
+// Create and draw the visualization.
+new google.visualization.LineChart(document.getElementById('visualization')).
+  draw(data, {curveType: "none",
+    width: 340, height: 200,
+    vAxis: {},
+    chartArea: {left: 50, top: 30, width: 280, height: 150},
+    legend: {position: 'top', textStyle: {color: 'blue', fontSize: 16}}
+  }
+);
