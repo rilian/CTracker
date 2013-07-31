@@ -20,7 +20,7 @@ describe CurrenciesController do
     end
 
     it 'collects multiple currencies' do
-      response.should redirect_to currencies_path
+      response.should be_success
 
       UserCountry.all.should have(2).items
       UserCountry.where(user_id: @user.id).map(&:country_id).should =~ [@country_1.id, @country_2.id]

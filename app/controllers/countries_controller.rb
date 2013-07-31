@@ -71,6 +71,6 @@ class CountriesController < ApplicationController
       country.save
     end
 
-    redirect_to countries_path, :notice => 'Countries were successfully visited'
+    render nothing: true
   end
 end

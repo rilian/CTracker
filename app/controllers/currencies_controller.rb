@@ -34,6 +34,6 @@ class CurrenciesController < ApplicationController
       end
     end
 
-    redirect_to currencies_path, :notice => 'Currencies were successfully collected'
+    render nothing: true
   end
 end

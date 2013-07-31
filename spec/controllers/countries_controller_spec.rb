@@ -16,7 +16,7 @@ describe CountriesController do
     end
 
     it 'visits multiple countries' do
-      response.should redirect_to countries_path
+      response.should be_success
 
       UserCountry.all.should have(2).items
       UserCountry.where(user_id: @user.id).map(&:country_id).should =~ [@country_1.id, @country_2.id]
