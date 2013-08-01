@@ -9,10 +9,7 @@ class CountriesController < ApplicationController
     @q = Country.search(params[:q])
     @countries = @q.result.includes(:user_countries)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @countries }
-    end
+    respond_with(@countries, @q)
   end
 
   # GET /countries/index_table
