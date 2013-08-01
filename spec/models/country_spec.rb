@@ -50,11 +50,13 @@ describe Country do
     it 'records that user visited country' do
       UserCountry.should have(0).items
 
-      @country.visitor_id = 1
-      @country.visited = true
-      @country.save.should be_true
+      @country.visit!(Struct.new(:id).new(1)).should be_true
 
       UserCountry.where(user_id: 1, country_id: @country.id).should have(1).item
     end
+  end
+
+  describe '.visit!' do
+    pending
   end
 end

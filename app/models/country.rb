@@ -35,6 +35,12 @@ class Country < ActiveRecord::Base
     user_countries.of_user(user).exists?
   end
 
+  def visit!(user)
+    self.visitor_id = user.id
+    self.visited = true
+    self.save!
+  end
+
   # Private methods (for example: custom validators)
   private
 

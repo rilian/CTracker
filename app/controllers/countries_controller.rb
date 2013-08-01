@@ -1,6 +1,8 @@
 class CountriesController < ApplicationController
   load_and_authorize_resource :country
 
+  respond_to :html, :xml, :json
+
   # GET /countries
   # GET /countries.xml
   def index
@@ -28,31 +30,18 @@ class CountriesController < ApplicationController
   # GET /countries/1
   # GET /countries/1.xml
   def show
-    @country = Country.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @country }
-    end
   end
 
   # GET /countries/pie_chart.js
   def pie_chart
-    respond_to do |format|
-      format.js  { render }
-    end
   end
 
   # GET /countries/line_chart.js
   def line_chart
-    respond_to do |format|
-      format.js  { render }
-    end
   end
 
   # GET /countries/1/edit
   def edit
-    @country = Country.find(params[:id])
   end
 
   # POST /countries

@@ -1,16 +1,15 @@
 class CurrenciesController < ApplicationController
   load_and_authorize_resource :currency
 
+  respond_to :html, :xml, :json
+
   # GET /currencies
   # GET /currencies.xml
   def index
     @q = Currency.search(params[:q])
     @currencies = @q.result
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @currencies }
-    end
+    respond_with(@currencies, @q)
   end
 
   # GET /currencies/index_table
@@ -30,33 +29,22 @@ class CurrenciesController < ApplicationController
   def show
     @currency = Currency.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @currency }
-    end
+    respond_with @currency
   end
 
-  # GET /currencies/pie_chart.js
+  # GET /currencies/pie_chart.json
   def pie_chart
-    respond_to do |format|
-      format.js { render }
-    end
   end
 
-  # GET /currencies/line_chart.js
+  # GET /currencies/line_chart.json
   def line_chart
-    respond_to do |format|
-      format.js { render }
-    end
   end
 
   def collect_multiple
     @currencies = Currency.find(params[:currency_ids])
     @currencies.each do |currency|
       if currency.country.present? && country = currency.country
-        country.visitor_id = current_user.id
-        country.visited = true
-        country.save!
+        country.visit!(current_user)
       end
     end
 
